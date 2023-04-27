@@ -76,5 +76,6 @@ public class Program_one {
 		Thread.sleep(5000);
 		WebElement logout = driver.findElement(By.id("logout"));
 		logout.click();
+		System.out.println("All clear");
 	}
 }
