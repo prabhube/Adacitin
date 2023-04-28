@@ -1,6 +1,12 @@
 package org.one;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -8,7 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Program_one {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\prem\\eclipse-workspace\\Adacitinhotelapp\\Driver\\chromedriver.exe");
 		WebDriver driver=new ChromeDriver();
 		driver.get("https://adactinhotelapp.com/");
@@ -76,6 +82,9 @@ public class Program_one {
 		Thread.sleep(5000);
 		WebElement logout = driver.findElement(By.id("logout"));
 		logout.click();
+		TakesScreenshot shot=(TakesScreenshot)driver;
+		File screenshotAs = shot.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshotAs, new File("C:\\Users\\prem\\eclipse-workspace\\Adacitinhotelapp\\screenshot"));
 		System.out.println("All clear");
 	}
 }
